@@ -334,7 +334,14 @@
     });
 
     try {
-      const loadingTask = pdfjsLib.getDocument(PDF_URL);
+
+const loadingTask = pdfjsLib.getDocument({
+  url: PDF_URL,
+  cMapUrl: "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/cmaps/",
+  cMapPacked: true,
+  standardFontDataUrl: "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/standard_fonts/"
+});
+
       pdf = await loadingTask.promise;
 
       pageInput.max = pdf.numPages;
